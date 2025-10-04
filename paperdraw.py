@@ -58,8 +58,8 @@ def drawMetar(metarInfo):
     canvas.text((10, 35), metarInfo["name"], font = font12, fill = epd.GRAY4)
     updateImage = imageBase.crop([10, 0, epd.height, 60])
     imageBase.paste(updateImage, (10, 0))
-    #epd.display_Partial(epd.getbuffer(imageBase), 10, 0, epd.width, 60)    
-    epd.display_Fast(epd.getbuffer(imageBase))
+    epd.display_Partial(epd.getbuffer(imageBase), 10, 0, epd.height, 60)    
+    #epd.display_Fast(epd.getbuffer(imageBase))
 
 # try:
 #     resp = req.get(wx_url)
