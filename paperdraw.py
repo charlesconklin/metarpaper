@@ -42,6 +42,7 @@ def shutdownPaperDraw():
 
 def drawMetar(metarInfo):
     logging.info(f"drawMetar > {metarInfo["icaoId"]} - {metarInfo["name"]}")
+    num = 0
     while (True):
         canvas.rectangle((10, 110, 120, 150), fill = 255)
         canvas.text((10, 110), time.strftime('%H:%M:%S'), font = font24, fill = 0)
