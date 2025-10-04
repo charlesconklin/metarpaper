@@ -42,29 +42,23 @@ def shutdownPaperDraw():
 
 def drawMetar(metarInfo):
     logging.info(f"drawMetar > {metarInfo["icaoId"]} - {metarInfo["name"]}")
-    num = 0
-    while (True):
-        canvas.rectangle((10, 110, 130, 150), fill = 0)
-        canvas.text((10, 110), time.strftime('%H:%M:%S'), font = font24, fill = 0)
-        newimage = imageBase.crop([10, 110, 130, 150])
-        imageBase.paste(newimage, (10,110)) 
-        epd.display_Partial(epd.getbuffer(imageBase),110, epd.height - 130, 150, epd.height - 10)
-        num = num + 1
-        if(num == 10):
-            break
+    # num = 0
+    # while (True):
+    #     canvas.rectangle((10, 110, 120, 150), fill = 255)
+    #     canvas.text((10, 110), time.strftime('%H:%M:%S'), font = font24, fill = 0)
+    #     newimage = imageBase.crop([10, 110, 120, 150])
+    #     imageBase.paste(newimage, (10,110)) 
+    #     epd.display_Partial(epd.getbuffer(imageBase),110, epd.height - 120, 150, epd.height - 10)
+    #     num = num + 1
+    #     if(num == 10):
+    #         break
 
-    canvas.rectangle((10, 0, epd.width, 45), fill = epd.GRAY1)
+    canvas.rectangle((10, 0, epd.width, 60), fill = epd.GRAY1)
     canvas.text((10, 0), metarInfo["icaoId"], font = font35, fill = epd.GRAY4)
-    updateImage = imageBase.crop([10, 0, epd.width, 45])
-    imageBase.paste(updateImage, (10, 0))
-    epd.display_Partial(epd.getbuffer(imageBase), 10, 0, epd.width, 45)
-
-    canvas.rectangle((10, 35, 57, epd.width), fill = epd.GRAY1)
     canvas.text((10, 35), metarInfo["name"], font = font12, fill = epd.GRAY4)
-    updateImage = imageBase.crop([10, 35, epd.width, 57])
-    imageBase.paste(updateImage, (10, 35))
-    epd.display_Partial(epd.getbuffer(imageBase), 10, 35,  epd.width, 45)
-    
+    updateImage = imageBase.crop([10, 0, epd.width, 60])
+    imageBase.paste(updateImage, (10, 0))
+    epd.display_Partial(epd.getbuffer(imageBase), 10, 0, epd.width, 60)    
     #epd.display_Fast(epd.getbuffer(imageBase))
 
 # try:
