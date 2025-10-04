@@ -44,12 +44,14 @@ def drawMetar(metarInfo):
     logging.info(f"drawMetar > {metarInfo["icaoId"]} - {metarInfo["name"]}")
     canvas.rectangle((10, 0, 45, epd.width), fill = epd.GRAY1)
     canvas.text((10, 0), metarInfo["icaoId"], font = font35, fill = epd.GRAY4)
-    updateCanvas = canvas.crop([10, 0, 45, epd.width])
+    updateImage = imageBase.crop([10, 0, 45, epd.width])
+    imageBase.paste(updateImage, (10, 0))
     epd.display_Partial(epd.getbuffer(imageBase), 10, 0, 45,  epd.width)
 
     canvas.rectangle((10, 35, 57, epd.width), fill = epd.GRAY1)
     canvas.text((10, 35), metarInfo["name"], font = font12, fill = epd.GRAY4)
-    updateCanvas = canvas.crop([10, 35, 57, epd.width])
+    updateImage = imageBase.crop([10, 35, 57, epd.width])
+    imageBase.paste(updateImage, (10, 35))
     epd.display_Partial(epd.getbuffer(imageBase), 10, 0, 45,  epd.width)
     
     #epd.display_Fast(epd.getbuffer(imageBase))
