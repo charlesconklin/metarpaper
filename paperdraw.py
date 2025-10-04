@@ -19,7 +19,7 @@ import traceback
 logging.basicConfig(level=logging.DEBUG)
 
 epd = epd2in7_V2.EPD()
-imageBase = Image.new('1', (epd.height,epd.width), epd.GRAY1)  # 255: clear the frame
+imageBase = Image.new('1', (epd.height, epd.width), epd.GRAY1)  # 255: clear the frame
 canvas = ImageDraw.Draw(imageBase)
 
 font10 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 10)
@@ -32,7 +32,7 @@ def initPaperDraw():
     epd.init()
     epd.display_Base_color(epd.GRAY1)
     epd.Clear()
-    canvas.rectangle((0, 0, epd.height,epd.width), fill = epd.GRAY1)
+    canvas.rectangle((0, 0, epd.height, epd.width), fill = epd.GRAY1)
     canvas.text((10, 0), 'METAR MAP', font = font35, fill = epd.GRAY4)
     epd.display(epd.getbuffer(imageBase))
 
@@ -42,17 +42,17 @@ def shutdownPaperDraw():
 
 def drawMetar(metarInfo):
     logging.info(f"drawMetar > {metarInfo["icaoId"]} - {metarInfo["name"]}")
-    canvas.rectangle((10, 0, 45, epd.width), fill = epd.GRAY1)
+    canvas.rectangle((10, 0, epd.width, 45), fill = epd.GRAY1)
     canvas.text((10, 0), metarInfo["icaoId"], font = font35, fill = epd.GRAY4)
-    updateImage = imageBase.crop([10, 0, 45, epd.width])
+    updateImage = imageBase.crop([10, 0, epd.width, 45])
     imageBase.paste(updateImage, (10, 0))
-    epd.display_Partial(epd.getbuffer(imageBase), 10, 0, 45,  epd.width)
+    epd.display_Partial(epd.getbuffer(imageBase), 10, 0, epd.width, 45)
 
     canvas.rectangle((10, 35, 57, epd.width), fill = epd.GRAY1)
     canvas.text((10, 35), metarInfo["name"], font = font12, fill = epd.GRAY4)
-    updateImage = imageBase.crop([10, 35, 57, epd.width])
+    updateImage = imageBase.crop([10, 35, epd.width, 57])
     imageBase.paste(updateImage, (10, 35))
-    epd.display_Partial(epd.getbuffer(imageBase), 10, 0, 45,  epd.width)
+    epd.display_Partial(epd.getbuffer(imageBase), 10, 35,  epd.width, 45)
     
     #epd.display_Fast(epd.getbuffer(imageBase))
 
