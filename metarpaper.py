@@ -3,10 +3,9 @@
 import os
 import logging
 import time
-#import traceback
 import navbuttons
 import paperdraw
-import requests as req
+import requests as req # type: ignore
 
 
 base_path = os.getcwd()

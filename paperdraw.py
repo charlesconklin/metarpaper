@@ -13,7 +13,7 @@ if os.path.exists(libdir):
 import logging
 from wavesharelib import epd2in7_V2
 import time
-from PIL import Image,ImageDraw,ImageFont
+from PIL import Image,ImageDraw,ImageFont # type: ignore
 import traceback
 
 logging.basicConfig(level=logging.DEBUG)
@@ -33,7 +33,7 @@ def initPaperDraw():
     epd.display_Base_color(epd.GRAY1)
     epd.Clear()
     canvas.rectangle((0, 0, epd.height,epd.width), fill = epd.GRAY1)
-    canvas.text((20, 0), 'METAR MAP', font = font35, fill = epd.GRAY4)
+    canvas.text((10, 0), 'METAR MAP', font = font35, fill = epd.GRAY4)
     epd.display(epd.getbuffer(imageBase))
 
 def shutdownPaperDraw():
@@ -41,11 +41,18 @@ def shutdownPaperDraw():
     epd2in7_V2.epdconfig.module_exit(cleanup=True)
 
 def drawMetar(metarInfo):
-    logging.info(f"drawMetar > {metarInfo["icaoId"]} - {metarInfo["name"]}")    
-    canvas.rectangle((0, 0, epd.height,epd.width), fill = epd.GRAY1)
-    canvas.text((20, 0), metarInfo["icaoId"], font = font35, fill = epd.GRAY4)
-    canvas.text((20, 35), metarInfo["name"], font = font12, fill = epd.GRAY4)
-    epd.display_Fast(epd.getbuffer(imageBase))
+    logging.info(f"drawMetar > {metarInfo["icaoId"]} - {metarInfo["name"]}")
+    canvas.rectangle((10, 0, 45, epd.width), fill = epd.GRAY1)
+    canvas.text((10, 0), metarInfo["icaoId"], font = font35, fill = epd.GRAY4)
+    updateCanvas = canvas.crop([10, 0, 45, epd.width])
+    epd.display_Partial(epd.getbuffer(imageBase), 10, 0, 45,  epd.width)
+
+    canvas.rectangle((10, 35, 57, epd.width), fill = epd.GRAY1)
+    canvas.text((10, 35), metarInfo["name"], font = font12, fill = epd.GRAY4)
+    updateCanvas = canvas.crop([10, 35, 57, epd.width])
+    epd.display_Partial(epd.getbuffer(imageBase), 10, 0, 45,  epd.width)
+    
+    #epd.display_Fast(epd.getbuffer(imageBase))
 
 # try:
 #     resp = req.get(wx_url)
