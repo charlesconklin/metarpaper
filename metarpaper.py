@@ -60,7 +60,7 @@ def displayMetars():
                 paperSettings["hold"] = paperSettings["hold_sec"] > 0
                 time.sleep(1)
             displayMetarAtIndex(paperSettings["loop_index"])
-            time.sleep(3)
+            time.sleep(30)
             paperSettings["loop_index"] += 1
         paperSettings["loop_count"] += 1
 
@@ -122,17 +122,15 @@ try:
     logging.info("Metar Paper start. Press Ctrl+C to stop.")
     # watch the buttons for press events
     navbuttons.watchButtons(onButtonPress)
+    paperdraw.initPaperDraw()
     while True:
         resp = req.get(wx_url)
         #print(str(resp.status_code) + ": " + resp.text)
         if resp.status_code == 200:
             paperSettings["metar_list"] = resp.json()
-            paperdraw.initPaperDraw()
             displayMetars()
-            paperdraw.shutdownPaperDraw()
         else:
             print(str(resp.status_code) + ": " + resp.text)
-        time.sleep(8)
 except IOError as e:
     logging.info(e)
     
@@ -140,5 +138,5 @@ except KeyboardInterrupt:
     logging.info("ctrl + c:")
     exit()
 
-#finally:
-#    paperdraw.shutdownPaperDraw()
+finally:
+    paperdraw.shutdownPaperDraw()
