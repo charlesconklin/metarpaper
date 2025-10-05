@@ -32,9 +32,9 @@ def initPaperDraw():
     epd.init()
     epd.display_Base_color(epd.GRAY1)
     epd.Clear()
-    canvas.rectangle((0, 0, epd.height, epd.width), fill = epd.GRAY1)
-    canvas.text((10, 0), 'METAR MAP', font = font35, fill = epd.GRAY4)
-    epd.display(epd.getbuffer(imageBase))
+    #canvas.rectangle((0, 0, epd.height, epd.width), fill = epd.GRAY1)
+    #canvas.text((10, 0), 'METAR MAP', font = font35, fill = epd.GRAY4)
+    #epd.display(epd.getbuffer(imageBase))
 
 def shutdownPaperDraw():
     epd.Clear()
