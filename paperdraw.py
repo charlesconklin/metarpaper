@@ -53,7 +53,7 @@ def drawMetar(metarInfo):
     #     if(num == 10):
     #         break
 
-    canvas.rectangle((10, 0, 60, 260), fill = epd.GRAY2)
+    canvas.rectangle((10, 0, 60, 260), fill = epd.GRAY1)
     canvas.text((10, 0), metarInfo["icaoId"], font = font35, fill = epd.GRAY4)
     canvas.text((10, 35), metarInfo["name"], font = font12, fill = epd.GRAY4)
     updateImage = imageBase.crop([10, 0, 60, 260])
