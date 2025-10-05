@@ -40,17 +40,22 @@ def shutdownPaperDraw():
     epd2in7_V2.epdconfig.module_exit(cleanup=True)
 
 def drawMetar(metarInfo):
-    logging.info(f"drawMetar > {metarInfo["icaoId"]} - {metarInfo["name"]}")
+    fltCat = "" if "fltCat" not in metarInfo else metarInfo["fltCat"]
+    icaoId = "" if "icaoId" not in metarInfo else metarInfo["icaoId"]
+    icaoName = "" if "name" not in metarInfo else metarInfo["name"]
+
+    logging.info(f"drawMetar > {icaoId} - {icaoName}")
+
     canvas.rectangle((10, 0, 263, 60), fill = epd.GRAY1)
     updateImage = imageBase.crop([10, 0, 263, 60])
     imageBase.paste(updateImage, (10, 0))
     epd.display_Partial(epd.getbuffer(imageBase), 10, 0, 263, 60)
 
     canvas.rectangle((10, 0, 60, 263), fill = epd.GRAY1)
-    canvas.text((10, 0), metarInfo["icaoId"], font = font35, fill = epd.GRAY4)
-    tpos = 200 if "fltCat" not in metarInfo or len(metarInfo["fltCat"]) > 3 else 220    
-    canvas.text((tpos, 6), metarInfo["fltCat"], font = font24, fill = epd.GRAY4)    
-    canvas.text((10, 35), metarInfo["name"], font = font12, fill = epd.GRAY4)
+    canvas.text((10, 0), icaoId, font = font35, fill = epd.GRAY4)
+    tpos = 200 if len(fltCat) > 3 else 220
+    canvas.text((tpos, 6), fltCat, font = font24, fill = epd.GRAY4)    
+    canvas.text((10, 35), icaoName, font = font12, fill = epd.GRAY4)
     updateImage = imageBase.crop([10, 0, 60, 263])
     imageBase.paste(updateImage, (10, 0))
     epd.display_Partial(epd.getbuffer(imageBase), 10, 0, 60, 263)
