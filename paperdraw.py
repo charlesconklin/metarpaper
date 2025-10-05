@@ -48,7 +48,7 @@ def drawMetar(metarInfo):
 
     canvas.rectangle((10, 0, 60, 263), fill = epd.GRAY1)
     canvas.text((10, 0), metarInfo["icaoId"], font = font35, fill = epd.GRAY4)
-    tpos = 200 if metarInfo["fltCat"] is None or len(metarInfo["fltCat"]) > 3 else 220    
+    tpos = 200 if "fltCat" not in metarInfo or len(metarInfo["fltCat"]) > 3 else 220    
     canvas.text((tpos, 6), metarInfo["fltCat"], font = font24, fill = epd.GRAY4)    
     canvas.text((10, 35), metarInfo["name"], font = font12, fill = epd.GRAY4)
     updateImage = imageBase.crop([10, 0, 60, 263])
