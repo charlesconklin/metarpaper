@@ -41,17 +41,6 @@ def shutdownPaperDraw():
 
 def drawMetar(metarInfo):
     logging.info(f"drawMetar > {metarInfo["icaoId"]} - {metarInfo["name"]}")
-    # num = 0
-    # while (True):
-    #     canvas.rectangle((10, 110, 120, 150), fill = 255)
-    #     canvas.text((10, 110), time.strftime('%H:%M:%S'), font = font24, fill = 0)
-    #     newimage = imageBase.crop([10, 110, 120, 150])
-    #     imageBase.paste(newimage, (10,110)) 
-    #     epd.display_Partial(epd.getbuffer(imageBase),110, epd.height - 120, 150, epd.height - 10)
-    #     num = num + 1
-    #     if(num == 10):
-    #         break
-
     canvas.rectangle((10, 0, 263, 60), fill = epd.GRAY1)
     updateImage = imageBase.crop([10, 0, 263, 60])
     imageBase.paste(updateImage, (10, 0))

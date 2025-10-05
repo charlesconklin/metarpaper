@@ -122,13 +122,14 @@ try:
     logging.info("Metar Paper start. Press Ctrl+C to stop.")
     # watch the buttons for press events
     navbuttons.watchButtons(onButtonPress)
-    paperdraw.initPaperDraw()
     while True:
         resp = req.get(wx_url)
         #print(str(resp.status_code) + ": " + resp.text)
         if resp.status_code == 200:
             paperSettings["metar_list"] = resp.json()
+            paperdraw.initPaperDraw()
             displayMetars()
+            paperdraw.shutdownPaperDraw()
         else:
             print(str(resp.status_code) + ": " + resp.text)
         time.sleep(8)
@@ -139,5 +140,5 @@ except KeyboardInterrupt:
     logging.info("ctrl + c:")
     exit()
 
-finally:
-    paperdraw.shutdownPaperDraw()
+#finally:
+#    paperdraw.shutdownPaperDraw()
