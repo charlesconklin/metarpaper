@@ -32,7 +32,6 @@ def initPaperDraw():
     epd.init()
     epd.display_Base_color(epd.GRAY1)
     epd.Clear()
-    #canvas.rectangle((0, 0, epd.height, epd.width), fill = epd.GRAY1)
     #canvas.text((10, 0), 'METAR MAP', font = font35, fill = epd.GRAY4)
     #epd.display(epd.getbuffer(imageBase))
 
@@ -53,18 +52,19 @@ def drawMetar(metarInfo):
     #     if(num == 10):
     #         break
 
-    canvas.rectangle((10, 0, 60, 260), fill = epd.GRAY1)
-    updateImage = imageBase.crop([10, 0, 60, 260])
+    canvas.rectangle((10, 0, 263, 60), fill = epd.GRAY1)
+    updateImage = imageBase.crop([10, 0, 263, 60])
     imageBase.paste(updateImage, (10, 0))
-    epd.display_Partial(epd.getbuffer(imageBase), 10, 0, 60, 260)
+    epd.display_Partial(epd.getbuffer(imageBase), 10, 0, 263, 60)
 
-    canvas.rectangle((10, 0, 60, 260), fill = epd.GRAY1)
+    canvas.rectangle((10, 0, 60, 263), fill = epd.GRAY1)
     canvas.text((10, 0), metarInfo["icaoId"], font = font35, fill = epd.GRAY4)
+    tpos = 200 if len(metarInfo["fltCat"]) > 3 else 220    
+    canvas.text((tpos, 6), metarInfo["fltCat"], font = font24, fill = epd.GRAY4)    
     canvas.text((10, 35), metarInfo["name"], font = font12, fill = epd.GRAY4)
-    updateImage = imageBase.crop([10, 0, 60, 260])
+    updateImage = imageBase.crop([10, 0, 60, 263])
     imageBase.paste(updateImage, (10, 0))
-    epd.display_Partial(epd.getbuffer(imageBase), 10, 0, 60, 260)
-    #epd.display_Partial(epd.getbuffer(imageBase), 0, epd.height, 60, epd.height - 10)
+    epd.display_Partial(epd.getbuffer(imageBase), 10, 0, 60, 263)
     
     #epd.display_Fast(epd.getbuffer(imageBase))
 
