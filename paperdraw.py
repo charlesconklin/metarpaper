@@ -16,7 +16,7 @@ import time
 from PIL import Image,ImageDraw,ImageFont # type: ignore
 import traceback
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 #264 X 176
 epd = epd2in7_V2.EPD()
 imageBase = Image.new('1', (epd.height, epd.width), epd.GRAY1)  # 255: clear the frame

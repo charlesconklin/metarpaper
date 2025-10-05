@@ -28,7 +28,7 @@ paperSettings["loop_index"] = 0
 paperSettings["hold"] = False
 paperSettings["hold_sec"] = 0
 
-hold_amount = 5
+hold_amount = 20
 
 def getMetarInfo(code):
     for m in paperSettings["metar_list"]:
