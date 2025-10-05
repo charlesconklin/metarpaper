@@ -11,7 +11,7 @@ import requests as req # type: ignore
 base_path = os.getcwd()
 airport_file_path = os.path.join(base_path, 'paperairports')
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 wx_url = "https://aviationweather.gov/api/data/metar?hours=0&format=json&ids="
 
