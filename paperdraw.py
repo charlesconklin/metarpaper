@@ -17,7 +17,7 @@ from PIL import Image,ImageDraw,ImageFont # type: ignore
 import traceback
 
 logging.basicConfig(level=logging.DEBUG)
-
+#264 X 176
 epd = epd2in7_V2.EPD()
 imageBase = Image.new('1', (epd.height, epd.width), epd.GRAY1)  # 255: clear the frame
 canvas = ImageDraw.Draw(imageBase)
@@ -53,12 +53,14 @@ def drawMetar(metarInfo):
     #     if(num == 10):
     #         break
 
-    canvas.rectangle((10, 0, epd.height, 60), fill = epd.GRAY1)
+    canvas.rectangle((10, 0, 263, 60), fill = epd.GRAY1)
     canvas.text((10, 0), metarInfo["icaoId"], font = font35, fill = epd.GRAY4)
     canvas.text((10, 35), metarInfo["name"], font = font12, fill = epd.GRAY4)
-    updateImage = imageBase.crop([10, 0, epd.height, 60])
+    updateImage = imageBase.crop([10, 0, 263, 60])
     imageBase.paste(updateImage, (10, 0))
-    epd.display_Partial(epd.getbuffer(updateImage), 10, 0, epd.height, 60)    
+    #epd.display_Partial(epd.getbuffer(imageBase), 10, 0, epd.height, 60)
+    epd.display_Partial(epd.getbuffer(imageBase), 0, epd.height, 60, epd.height - 10)
+    
     #epd.display_Fast(epd.getbuffer(imageBase))
 
 # try:
