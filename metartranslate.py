@@ -41,7 +41,7 @@ modifiersDictionary = [
     ["E", "Ended"]
 ] 
 
-skyDictionary = ((
+skyDictionary = []
     ["BKN", "Broken"],
     ["CB", "Cumulonimbus"],
     ["CLR", "Sky Clear < 12K AGL"],
@@ -53,7 +53,7 @@ skyDictionary = ((
     ["TCU", "Towering Cumulus"],
     ["CAVOK", "Cloud and Visibility OK"],
     ["VV", "Vertical Visibility"]
-))
+]
 
 windDictionary = [
     ["00000", "Calm"],
@@ -67,25 +67,25 @@ windDictionary = [
 
 def translateModifiers(modString):
     result = modString if modString is not None else ""
-    for kvpa in modifiersDictionary.items():
+    for kvpa in modifiersDictionary:
         result = result.replace(kvpa[0], kvpa[1] + " ")
     return result.strip()
 
 def translateWeather(wxString):
     result = wxString if wxString is not None else ""
-    for kvpa in weatherDictionary.items():
+    for kvpa in weatherDictionary:
         result = result.replace(kvpa[0], kvpa[1] + " ")
     return translateModifiers(result)
 
 def translateSky(skyString):
     result = skyString if skyString is not None else ""
-    for kvpa in skyDictionary.items():
+    for kvpa in skyDictionary:
         result = result.replace(kvpa[0], kvpa[1] + " ")
     return  translateModifiers(result)
 
 def translateWind(windString): 
     result = windString if windString is not None else ""
-    for kvpa in windDictionary.items():
+    for kvpa in windDictionary:
         result = result.replace(kvpa[0], kvpa[1])
     return  result.strip()
 
