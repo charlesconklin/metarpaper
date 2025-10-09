@@ -130,8 +130,8 @@ def drawMetar(metarInfo):
     #canvas.line(( epd.height/2, 50,  epd.height/2,  epd.width), fill = epd.GRAY4)    
     # winds
     canvas.text((10, 52), f"Wind: {windDesc}", font = font12, fill = epd.GRAY4)
-
-    canvas.text((10, 66), f"Visibilty: {cloudSummaryDesc} - {visibilityDesc}", font = font12, fill = epd.GRAY4)
+    canvas.text((10, 66), f"Visibilty: {visibilityDesc}", font = font12, fill = epd.GRAY4)
+    canvas.text((10, 78), f"Clouds: {cloudSummaryDesc}", font = font12, fill = epd.GRAY4)
 
 
     epd.display_Fast(epd.getbuffer(imageBase))
