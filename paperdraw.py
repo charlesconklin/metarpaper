@@ -88,7 +88,7 @@ def drawMetar(metarInfo):
     timeDesc = ""
 
     if windDir != "":
-        windDesc = f"Wind: {windDir} @ {windSpeed}"
+        windDesc = f"{windDir} @ {windSpeed}"
         if windGust != "":
             windDesc += f" Gusting {windGust}"
     
@@ -129,7 +129,11 @@ def drawMetar(metarInfo):
     # draw split line
     canvas.line(( epd.height/2, 50,  epd.height/2,  epd.width), fill = epd.GRAY4)    
     # winds
-    canvas.text((10, 52), windDesc, font = font12, fill = epd.GRAY4)
+    canvas.text((10, 52), f"Wind: {windDesc}", font = font12, fill = epd.GRAY4)
+
+    canvas.text((10, 66), f"Vis:{cloudSummaryDesc} - {visibilityDesc}", font = font12, fill = epd.GRAY4)
+
+
     epd.display_Fast(epd.getbuffer(imageBase))
     
 
