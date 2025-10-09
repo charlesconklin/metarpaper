@@ -36,9 +36,7 @@ modifiersDictionary = [
     ["+", "Heavy"],
     ["VC", "in the Vicinity"],
     ["P", "More than"],
-    ["M", "Less than"],
-    ["B", "Began"],
-    ["E", "Ended"]
+    ["M", "Less than"]
 ] 
 
 skyDictionary = [
