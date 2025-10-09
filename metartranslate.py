@@ -41,7 +41,7 @@ modifiersDictionary = [
     ["E", "Ended"]
 ] 
 
-skyDictionary = []
+skyDictionary = [
     ["BKN", "Broken"],
     ["CB", "Cumulonimbus"],
     ["CLR", "Sky Clear < 12K AGL"],
