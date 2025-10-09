@@ -119,25 +119,16 @@ def drawMetar(metarInfo):
 
 
     logging.info(f"drawMetar > {icaoId} - {icaoName}")
-
-    canvas.rectangle((10, 0, 263, 60), fill = epd.GRAY1)
-    updateImage = imageBase.crop([10, 0, 263, 60])
-    imageBase.paste(updateImage, (10, 0))
-    epd.display_Partial(epd.getbuffer(imageBase), 10, 0, 263, 60)
-
-    canvas.rectangle((10, 0, 60, 263), fill = epd.GRAY1)
+    canvas.rectangle((0, 0, epd.width, epd.height), fill = epd.GRAY1)
+    # first line airport and Flt Cat
     canvas.text((10, 0), icaoId, font = font35, fill = epd.GRAY4)
     tpos = 200 if len(fltCat) > 3 else 220
-    canvas.text((tpos, 6), fltCat, font = font24, fill = epd.GRAY4)    
+    canvas.text((tpos, 6), fltCat, font = font24, fill = epd.GRAY4)
+    # second line is name of airport
     canvas.text((10, 35), icaoName, font = font12, fill = epd.GRAY4)
-    updateImage = imageBase.crop([10, 0, 60, 263])
-    imageBase.paste(updateImage, (10, 0))
-    epd.display_Partial(epd.getbuffer(imageBase), 10, 0, 60, 263)
+    # drawe split line
+    canvas.line(( epd.width/2, 50,  epd.width,  epd.height), fill = epd.GRAY4)
 
-    canvas.rectangle((10, 61, 120, 131), fill = epd.GRAY4)
-    updateImage = imageBase.crop([10, 61, 120, 131])
-    imageBase.paste(updateImage, (10, 61))
-    epd.display_Partial(epd.getbuffer(imageBase), 10, 61, 120, 131)
     
     #epd.display_Fast(epd.getbuffer(imageBase))
 
