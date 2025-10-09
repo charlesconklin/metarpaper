@@ -41,7 +41,7 @@ modifiersDictionary = [
     ["E", "Ended"]
 ] 
 
-skyDictionary = [
+skyDictionary = ((
     ["BKN", "Broken"],
     ["CB", "Cumulonimbus"],
     ["CLR", "Sky Clear < 12K AGL"],
@@ -53,8 +53,7 @@ skyDictionary = [
     ["TCU", "Towering Cumulus"],
     ["CAVOK", "Cloud and Visibility OK"],
     ["VV", "Vertical Visibility"]
-
-]
+))
 
 windDictionary = [
     ["00000", "Calm"],
