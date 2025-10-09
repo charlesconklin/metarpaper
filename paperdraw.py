@@ -119,16 +119,20 @@ def drawMetar(metarInfo):
 
 
     logging.info(f"drawMetar > {icaoId} - {icaoName}")
-    canvas.rectangle((0, 0, epd.width, epd.height), fill = epd.GRAY1)
+    canvas.rectangle((0, 0, epd.height, epd.width), fill = epd.GRAY1)
     # first line airport and Flt Cat
     canvas.text((10, 0), icaoId, font = font35, fill = epd.GRAY4)
     tpos = 200 if len(fltCat) > 3 else 220
     canvas.text((tpos, 6), fltCat, font = font24, fill = epd.GRAY4)
     # second line is name of airport
     canvas.text((10, 35), icaoName, font = font12, fill = epd.GRAY4)
-    # drawe split line
+    # draw split line
     canvas.line(( epd.height/2, 50,  epd.height/2,  epd.width), fill = epd.GRAY4)    
     epd.display_Fast(epd.getbuffer(imageBase))
+    # winds
+    canvas.text((10, 0), windDesc, font = font12, fill = epd.GRAY4)
+    
+
 
 # try:
 #     resp = req.get(wx_url)
