@@ -62,7 +62,7 @@ def shutdownPaperDraw():
     epd2in7_V2.epdconfig.module_exit(cleanup=True)
 
 def drawMetar(metarInfo):
-    logging.info(f"METAR: {getStringValue(metarInfo, "fltCat")}")
+    logging.info(f"METAR: {getStringValue(metarInfo, "rawObj")}")
     fltCat = getStringValue(metarInfo, "fltCat")
     icaoId = getStringValue(metarInfo, "icaoId")
     icaoName = getStringValue(metarInfo, "name")
