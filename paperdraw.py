@@ -95,7 +95,7 @@ def drawMetar(metarInfo):
     if visibility != "":        
         visibilityDesc = visibility.replace("+", "") + " Miles"
         if "+" in visibility:
-            visibilityDesc = "More than " + visibilityDesc
+            visibilityDesc = "More Than " + visibilityDesc
 
     if currentWx != "":
         currWeatherDesc = metartranslate.translateWeather(currentWx)
@@ -112,7 +112,7 @@ def drawMetar(metarInfo):
         altimeterDesc = altimeter
     
     if temp != "":
-        tempDesc = f"{temp} / {dewp}"
+        tempDesc = f"Tempurature: {temp}   Dew Point: {dewp}"
 
     if epochTime > 0:
         timeDesc = epoch_to_24hr_time(epochTime)
@@ -129,12 +129,14 @@ def drawMetar(metarInfo):
     # draw split line
     #canvas.line(( epd.height/2, 50,  epd.height/2,  epd.width), fill = epd.GRAY4)    
     # winds
-    logging.info(f"Wind {windDesc}")
+    
     canvas.text((10, 52), f"Wind: {windDesc}", font = font12, fill = epd.GRAY4)
-    logging.info(f"Visibility: {visibilityDesc}")
+    
     canvas.text((10, 66), f"Visibilty: {visibilityDesc}", font = font12, fill = epd.GRAY4)
-    logging.info(f"Clouds: {cloudSummaryDesc}")
-    canvas.text((10, 78), f"Clouds: {cloudSummaryDesc}", font = font12, fill = epd.GRAY4)
+    canvas.text((10, 78), f"Weather: {currWeatherDesc}", font = font12, fill = epd.GRAY4)
+    canvas.text((10, 90), tempDesc, font = font12, fill = epd.GRAY4)
+
+    canvas.text((10, 102), f"Clouds: {cloudSummaryDesc}", font = font12, fill = epd.GRAY4)
 
 
     epd.display_Fast(epd.getbuffer(imageBase))
