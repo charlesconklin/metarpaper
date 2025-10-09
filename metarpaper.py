@@ -29,6 +29,7 @@ paperSettings["hold"] = False
 paperSettings["hold_sec"] = 0
 
 hold_amount = 20
+timeBetweenAiports = 5
 
 def getMetarInfo(code):
     for m in paperSettings["metar_list"]:
@@ -60,7 +61,7 @@ def displayMetars():
                 paperSettings["hold"] = paperSettings["hold_sec"] > 0
                 time.sleep(1)
             displayMetarAtIndex(paperSettings["loop_index"])
-            time.sleep(30)
+            time.sleep(timeBetweenAiports)
             paperSettings["loop_index"] += 1
         paperSettings["loop_count"] += 1
 
