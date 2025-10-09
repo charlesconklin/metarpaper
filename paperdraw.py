@@ -129,8 +129,11 @@ def drawMetar(metarInfo):
     # draw split line
     #canvas.line(( epd.height/2, 50,  epd.height/2,  epd.width), fill = epd.GRAY4)    
     # winds
+    logging.info(f"Wind {windDesc}")
     canvas.text((10, 52), f"Wind: {windDesc}", font = font12, fill = epd.GRAY4)
+    logging.info(f"Visibility: {icaoName}")
     canvas.text((10, 66), f"Visibilty: {visibilityDesc}", font = font12, fill = epd.GRAY4)
+    logging.info(f"Clouds: {icaoName}")
     canvas.text((10, 78), f"Clouds: {cloudSummaryDesc}", font = font12, fill = epd.GRAY4)
 
 
