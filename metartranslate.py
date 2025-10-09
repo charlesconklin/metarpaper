@@ -60,7 +60,7 @@ windDictionary = [
     ["00000", "Calm"],
     ["VRB", "Variable "],
     ["G", " Gusting "],
-    ["P", " Greater Than "]
+    ["P", " Greater Than "],
     ["KPH", " Kilometers/Hour"],
     ["MPS", " Meters/Second"],
     ["KT", " Knots"],
