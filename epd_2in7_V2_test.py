@@ -7,7 +7,7 @@ picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__)
 import logging
 from wavesharelib import epd2in7_V2
 import time
-from PIL import Image,ImageDraw,ImageFont
+from PIL import Image,ImageDraw,ImageFont # type: ignore
 import traceback
 
 logging.basicConfig(level=logging.DEBUG)

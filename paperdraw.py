@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 import sys
 import os
+import datetime
 
 base_path = os.getcwd()
 picdir = os.path.join(base_path, 'pic')
@@ -15,6 +16,7 @@ from wavesharelib import epd2in7_V2
 import time
 from PIL import Image,ImageDraw,ImageFont # type: ignore
 import traceback
+import metartranslate
 
 logging.basicConfig(level=logging.INFO)
 #264 X 176
@@ -28,6 +30,26 @@ font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
 font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
 font35 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 35)
 
+def getStringValue(metarObj, fieldName):
+    return "" if fieldName not in metarObj else str(metarObj[fieldName])
+def getFloatValue(metarObj, fieldName):    
+    return float(0) if fieldName not in metarObj else float(metarObj[fieldName])
+def getArrayValue(metarObj, fieldName):
+    return [] if fieldName not in metarObj else metarObj[fieldName]
+def epoch_to_24hr_time(epoch_value: float) -> str:
+    # 1. Convert the epoch value (float) to a datetime object.
+    # fromtimestamp() uses the system's local timezone for conversion.
+    try:
+        dt_object = datetime.datetime.fromtimestamp(epoch_value)
+    except ValueError as e:
+        return f"Error: Invalid epoch value provided. {e}"
+    # 2. Format the datetime object to extract the 24-hour time.
+    # %H: Hour (24-hour clock) as a zero-padded decimal number.
+    # %M: Minute as a zero-padded decimal number.
+    time_string = dt_object.strftime("%H:%M")
+
+    return time_string
+
 def initPaperDraw():
     epd.init()
     epd.display_Base_color(epd.GRAY1)
@@ -40,9 +62,61 @@ def shutdownPaperDraw():
     epd2in7_V2.epdconfig.module_exit(cleanup=True)
 
 def drawMetar(metarInfo):
-    fltCat = "" if "fltCat" not in metarInfo else metarInfo["fltCat"]
-    icaoId = "" if "icaoId" not in metarInfo else metarInfo["icaoId"]
-    icaoName = "" if "name" not in metarInfo else metarInfo["name"]
+    fltCat = getStringValue(metarInfo, "fltCat")
+    icaoId = getStringValue(metarInfo, "icaoId")
+    icaoName = getStringValue(metarInfo, "name")
+    windDir = getStringValue(metarInfo, "wdir")
+    windSpeed = getStringValue(metarInfo, "wspd")
+    windGust = getStringValue(metarInfo, "wgst")
+    visibility = getStringValue(metarInfo, "visib")
+    currentWx = getStringValue(metarInfo, "wxString")
+    cloudCover = getStringValue(metarInfo, "cover")
+    cloudsArray = getArrayValue(metarInfo, "clouds")
+    altimeter = str(round(getFloatValue(metarInfo, "altim") / 33.864, 2))
+    temp = getStringValue(metarInfo, "temp")
+    dewp = getStringValue(metarInfo, "dep")
+    epochTime = getFloatValue(metarInfo, "obsTime")
+
+    # = getStringValue(metarInfo, "")
+    windDesc = "Unknown" 
+    visibilityDesc = "Unkown"
+    currWeatherDesc = ""
+    cloudSummaryDesc = ""
+    cloudLayerDesc = []
+    altimeterDesc = ""
+    tempDesc = ""
+    timeDesc = ""
+
+    if windDir != "":
+        windDesc = f"Wind: {windDir} @ {windSpeed}"
+        if windGust != "":
+            windDesc += f" Gusting {windGust}"
+    
+    if visibility != "":        
+        visibilityDesc = visibility.replace("+", "") + " Miles"
+        if "+" in visibility:
+            visibilityDesc = "More than " + visibilityDesc
+
+    if currentWx != "":
+        currWeatherDesc = metartranslate.translateWeather(currentWx)
+    
+    if cloudCover != "":
+        cloudSummaryDesc = metartranslate.translateSky(cloudCover)
+
+    if cloudsArray is not None and len(cloudsArray) > 0:
+        for cloudLayer in cloudsArray:
+            clDesc = metartranslate.translateCloudLayer(cloudLayer)
+            cloudLayerDesc.append(clDesc)
+
+    if altimeter != "":
+        altimeterDesc = altimeter
+    
+    if temp != "":
+        tempDesc = f"{temp} / {dewp}"
+
+    if epochTime > 0:
+        timeDesc = epoch_to_24hr_time(epochTime)
+
 
     logging.info(f"drawMetar > {icaoId} - {icaoName}")
 
