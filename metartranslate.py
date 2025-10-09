@@ -42,11 +42,11 @@ modifiersDictionary = [
 skyDictionary = [
     ["BKN", "Broken"],
     ["CB", "Cumulonimbus"],
-    ["CLR", "Sky Clear < 12K AGL"],
+    ["CLR", "Sky Clear Below 12K AGL"],
     ["FEW", "Few Clouds"],
     ["OVC", "Overcast"],
     ["OVX", "Sky Obscured"],
-    ["SCT", "Scattered clouds"],
+    ["SCT", "Scattered Clouds"],
     ["SKC", "Sky Clear"],
     ["TCU", "Towering Cumulus"],
     ["CAVOK", "Cloud and Visibility OK"],
