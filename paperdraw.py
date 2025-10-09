@@ -135,9 +135,9 @@ def drawMetar(metarInfo):
     epd.display_Partial(epd.getbuffer(imageBase), 10, 0, 60, 263)
 
     canvas.rectangle((10, 61, 120, 131), fill = epd.GRAY4)
-    updateImage = imageBase.crop([10, 61, 120, 263])
+    updateImage = imageBase.crop([10, 61, 120, 131])
     imageBase.paste(updateImage, (10, 61))
-    epd.display_Partial(epd.getbuffer(imageBase), 10, 61, 120, 263)
+    epd.display_Partial(epd.getbuffer(imageBase), 10, 61, 120, 131)
     
     #epd.display_Fast(epd.getbuffer(imageBase))
 
