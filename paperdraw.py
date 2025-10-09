@@ -74,7 +74,7 @@ def drawMetar(metarInfo):
     cloudsArray = getArrayValue(metarInfo, "clouds")
     altimeter = str(round(getFloatValue(metarInfo, "altim") / 33.864, 2))
     temp = getStringValue(metarInfo, "temp")
-    dewp = getStringValue(metarInfo, "dep")
+    dewp = getStringValue(metarInfo, "dewp")
     epochTime = getFloatValue(metarInfo, "obsTime")
 
     # = getStringValue(metarInfo, "")
