@@ -131,16 +131,17 @@ def drawMetar(metarInfo):
     # second line is name of airport
     canvas.text((10, 35), icaoName, font = font12, fill = epd.GRAY4)
     # draw split line    
-    canvas.line(( 0,  50,  epd.height, 50), fill = epd.GRAY4)    
-    #canvas.line(( epd.height/2, 50,  epd.height/2,  epd.width), fill = epd.GRAY4)    
-    # winds
-    
+    canvas.line(( 0,  51,  epd.height, 51), fill = epd.GRAY4)    
+    # winds    
     canvas.text((10, 52), f"Wind: {windDesc}", font = font12, fill = epd.GRAY4)
-    
+    # visibility
     canvas.text((10, 66), f"Visibilty: {visibilityDesc}", font = font12, fill = epd.GRAY4)
+    # tempurature
     canvas.text((10, 78), tempDesc, font = font12, fill = epd.GRAY4)
+    # altimeter
     canvas.text((10, 90), f"Altimeter: {altimeterDesc}", font = font12, fill = epd.GRAY4)
-    offset = 0
+    # weather
+    offset = 0    
     if (currWeatherDesc != ""):
         offset += 12
         canvas.text((10, 102), f"Weather: {currWeatherDesc}", font = font12, fill = epd.GRAY4)    

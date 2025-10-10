@@ -58,8 +58,6 @@ windDictionary = [
     ["VRB", "Variable "],
     ["G", " Gusting "],
     ["P", " Greater Than "],
-    ["KPH", " Kilometers/Hour"],
-    ["MPS", " Meters/Second"],
     ["KT", " Knots"],
 ]
 
