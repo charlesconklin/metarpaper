@@ -92,7 +92,7 @@ def translateCloudLayer(layer):
 
 def translateCloudLayerTop(layer):
     #sample {"cover": "BKN","base": 9000, "top": 12000}
-    tops = "  Tops 25,000 AGL"
+    tops = ""
     if "top" in  layer:
         tops = f"  Tops {layer["top"]:,} AGL"
 
