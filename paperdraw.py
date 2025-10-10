@@ -74,8 +74,8 @@ def drawMetar(metarInfo):
     cloudCover = getStringValue(metarInfo, "cover")
     cloudsArray = getArrayValue(metarInfo, "clouds")
     altimeter = str(round(getFloatValue(metarInfo, "altim") / 33.864, 2))
-    temp = getStringValue(metarInfo, "temp")
-    dewp = getStringValue(metarInfo, "dewp")
+    temp = getFloatValue(metarInfo, "temp")
+    dewp = getFloatValue(metarInfo, "dewp")
     epochTime = getFloatValue(metarInfo, "obsTime")
 
     # = getStringValue(metarInfo, "")
@@ -113,7 +113,7 @@ def drawMetar(metarInfo):
         altimeterDesc = altimeter
     
     if temp != "":
-        tempDesc = f"Tempurature: {round(temp, 0)}   Dew Point: {round(dewp, 0)}"
+        tempDesc = f"Tempurature: {str(round(temp, 0))}   Dew Point: {str(round(dewp, 0))}"
 
     if epochTime > 0:
         timeDesc = epoch_to_24hr_time(epochTime)
