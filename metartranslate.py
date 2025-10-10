@@ -34,7 +34,7 @@ weatherDictionary = [
 modifiersDictionary = [
     ["-", "Light"],
     ["+", "Heavy"],
-    ["VC", "in the Vicinity"],
+    ["VC", "Nearby"],
     ["P", "More than"],
     ["M", "Less than"]
 ] 
