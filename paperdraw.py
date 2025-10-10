@@ -152,6 +152,8 @@ def drawMetar(metarInfo):
     else:
         canvas.text((10, 102 + offset), f"Clouds: {cloudSummaryDesc}", font = font12, fill = epd.GRAY4)
 
+    canvas.text((10, epd.width - 12), f"Observed at {timeDesc}", font = font12, fill = epd.GRAY4)
+
     epd.display_Fast(epd.getbuffer(imageBase))
     
 
