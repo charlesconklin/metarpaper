@@ -145,6 +145,7 @@ def drawMetar(metarInfo):
     offset = 0
     rightset = 0
     if (currWeatherDesc != ""):
+        maxCloudLines -= 1
         offset += 12
         canvas.text((10, 90), f"Weather: {currWeatherDesc}", font = font12, fill = epd.GRAY4)    
     if len(cloudLayerDesc) > 0:
