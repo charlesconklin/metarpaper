@@ -152,7 +152,7 @@ def drawMetar(metarInfo):
                 canvas.text((10 + rightset, 102 + offset), f"{cloudLayer}", font = font12, fill = epd.GRAY4)
             else: 
                 canvas.text((10, 102 + offset), f"Clouds: {cloudLayer}", font = font12, fill = epd.GRAY4)
-                rightset += 45
+                rightset += 44
             offset += 12
     else:
         canvas.text((10, 102 + offset), f"Clouds: {cloudSummaryDesc}", font = font12, fill = epd.GRAY4)
