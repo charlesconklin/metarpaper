@@ -156,6 +156,7 @@ def drawMetar(metarInfo):
             offset += 12
     else:
         canvas.text((10, 90 + offset), f"Clouds: {cloudSummaryDesc}", font = font12, fill = epd.GRAY4)
+        offset += 12
 
     # altimeter
     canvas.text((10, 90 + offset), f"Altimeter: {altimeterDesc}", font = font12, fill = epd.GRAY4)
