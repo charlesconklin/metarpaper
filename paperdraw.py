@@ -89,9 +89,12 @@ def drawMetar(metarInfo):
     timeDesc = ""
 
     if windDir != "":
-        windDesc = f"{windDir} @ {windSpeed}"
-        if windGust != "":
-            windDesc += f" Gusting {windGust}"
+        if windSpeed == "0":
+            windDesc = "Calm"
+        else:
+            windDesc = f"{windDir} at {windSpeed}"
+            if windGust != "":
+                windDesc += f" Gusting {windGust}"
     
     if visibility != "":        
         visibilityDesc = visibility.replace("+", "") + " Miles"
