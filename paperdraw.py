@@ -138,25 +138,27 @@ def drawMetar(metarInfo):
     canvas.text((10, 66), f"Visibilty: {visibilityDesc}", font = font12, fill = epd.GRAY4)
     # tempurature
     canvas.text((10, 78), tempDesc, font = font12, fill = epd.GRAY4)
-    # altimeter
-    canvas.text((10, 90), f"Altimeter: {altimeterDesc}", font = font12, fill = epd.GRAY4)
     # weather
     offset = 0
     rightset = 0
     if (currWeatherDesc != ""):
         offset += 12
-        canvas.text((10, 102), f"Weather: {currWeatherDesc}", font = font12, fill = epd.GRAY4)    
+        canvas.text((10, 90), f"Weather: {currWeatherDesc}", font = font12, fill = epd.GRAY4)    
     if len(cloudLayerDesc) > 0:
         for cloudLayer in cloudLayerDesc:
             if rightset > 0:
-                canvas.text((10 + rightset, 102 + offset), f"{cloudLayer}", font = font12, fill = epd.GRAY4)
+                canvas.text((10 + rightset, 90 + offset), f"{cloudLayer}", font = font12, fill = epd.GRAY4)
             else: 
-                canvas.text((10, 102 + offset), f"Clouds: {cloudLayer}", font = font12, fill = epd.GRAY4)
+                canvas.text((10, 90 + offset), f"Clouds: {cloudLayer}", font = font12, fill = epd.GRAY4)
                 rightset += 44
             offset += 12
     else:
-        canvas.text((10, 102 + offset), f"Clouds: {cloudSummaryDesc}", font = font12, fill = epd.GRAY4)
+        canvas.text((10, 90 + offset), f"Clouds: {cloudSummaryDesc}", font = font12, fill = epd.GRAY4)
 
+    # altimeter
+    canvas.text((10, 90 + offset), f"Altimeter: {altimeterDesc}", font = font12, fill = epd.GRAY4)
+    
+    # time at bottome
     canvas.text((10, epd.width - 13), f"Observed at {timeDesc}", font = font12, fill = epd.GRAY4)
 
     epd.display_Fast(epd.getbuffer(imageBase))
