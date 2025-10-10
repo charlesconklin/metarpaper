@@ -73,7 +73,7 @@ def drawMetar(metarInfo):
     currentWx = getStringValue(metarInfo, "wxString")
     cloudCover = getStringValue(metarInfo, "cover")
     cloudsArray = getArrayValue(metarInfo, "clouds")
-    altimeter = str(round(getFloatValue(metarInfo, "altim") / 33.864, 2))
+    altimeter = getFloatValue(metarInfo, "altim") / 33.864
     temp = getFloatValue(metarInfo, "temp")
     dewp = getFloatValue(metarInfo, "dewp")
     epochTime = getFloatValue(metarInfo, "obsTime")
@@ -113,7 +113,7 @@ def drawMetar(metarInfo):
             cloudLayerDesc.append(clDesc)
 
     if altimeter != "":
-        altimeterDesc = altimeter
+        altimeterDesc = "{:.2f}".format(altimeter)
     
     if temp != "":
         tempDesc = f"Tempurature: {str(int(round(temp, 0)))}°C  Dew Point: {str(int(round(dewp, 0)))}°C"
