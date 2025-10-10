@@ -112,12 +112,11 @@ def drawMetar(metarInfo):
             cloudLayerDesc.append(clDesc)
 
     if altimeter != "":
-        altimeterDesc = "{:.2f}".format(altimeter)
-    
-    tempFormatter = "{:.2f}"
+        altimeterDesc = f"{altimeter:.2f}"
+        
     if temp != "":
         # tempDesc = f"Tempurature: {str(int(round(temp, 0)))}°C  Dew Point: {str(int(round(dewp, 0)))}°C"
-        tempDesc = f"Tempurature: {temp:.2f}°C  Dew Point: {dewp:.2f}°C"
+        tempDesc = f"Tempurature: {temp:.0f}°C  Dew Point: {dewp:.0f}°C"
 
     if epochTime > 0:
         timeDesc = epoch_to_24hr_time(epochTime)
