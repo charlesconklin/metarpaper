@@ -139,10 +139,13 @@ def drawMetar(metarInfo):
     offset = 0
     if (currWeatherDesc != ""):
         offset += 12
-        canvas.text((10, 102), f"Weather: {currWeatherDesc}", font = font12, fill = epd.GRAY4)
-    
-    canvas.text((10, 102 + offset), f"Clouds: {cloudSummaryDesc}", font = font12, fill = epd.GRAY4)
-
+        canvas.text((10, 102), f"Weather: {currWeatherDesc}", font = font12, fill = epd.GRAY4)    
+    if len(cloudLayerDesc) > 0:
+        for cloudLayer in cloudLayerDesc:
+            canvas.text((10, 102 + offset), f"Clouds: {cloudLayer}", font = font12, fill = epd.GRAY4)
+            offset += 12
+    else:
+        canvas.text((10, 102 + offset), f"Clouds: {cloudSummaryDesc}", font = font12, fill = epd.GRAY4)
 
     epd.display_Fast(epd.getbuffer(imageBase))
     
