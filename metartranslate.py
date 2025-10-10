@@ -91,4 +91,4 @@ def translateCloudLayer(layer):
     #sample {"cover": "BKN","base": 9000}
     cover = translateSky(layer["cover"])
     base = layer["base"]
-    return f"{cover} @ {base}"
+    return f"{cover} @ {base} AGL"
