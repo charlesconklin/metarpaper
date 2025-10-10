@@ -113,6 +113,7 @@ def drawMetar(metarInfo):
             topDesc =  metartranslate.translateCloudLayerTop(cloudLayer)
             if topDesc != "":
                 cloudLayerDesc.append(topDesc)
+                cloudLayerDesc.append(topDesc)
 
     if altimeter != "":
         altimeterDesc = f"{altimeter:.2f}"
