@@ -113,7 +113,7 @@ def drawMetar(metarInfo):
         altimeterDesc = altimeter
     
     if temp != "":
-        tempDesc = f"Tempurature: {temp}   Dew Point: {dewp}"
+        tempDesc = f"Tempurature: {round(temp, 0)}   Dew Point: {round(dewp, 0)}"
 
     if epochTime > 0:
         timeDesc = epoch_to_24hr_time(epochTime)
