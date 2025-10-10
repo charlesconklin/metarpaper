@@ -141,14 +141,19 @@ def drawMetar(metarInfo):
     # altimeter
     canvas.text((10, 90), f"Altimeter: {altimeterDesc}", font = font12, fill = epd.GRAY4)
     # weather
-    offset = 0    
+    offset = 0
+    rightset = 50
     if (currWeatherDesc != ""):
         offset += 12
         canvas.text((10, 102), f"Weather: {currWeatherDesc}", font = font12, fill = epd.GRAY4)    
     if len(cloudLayerDesc) > 0:
         for cloudLayer in cloudLayerDesc:
-            canvas.text((10, 102 + offset), f"Clouds: {cloudLayer}", font = font12, fill = epd.GRAY4)
+            if rightset > 0:
+                canvas.text((10, 102 + offset), f"Clouds: {cloudLayer}", font = font12, fill = epd.GRAY4)
+            else: 
+                canvas.text((10 + rightset, 102 + offset), f"Clouds: {cloudLayer}", font = font12, fill = epd.GRAY4)
             offset += 12
+            rightset += 12
     else:
         canvas.text((10, 102 + offset), f"Clouds: {cloudSummaryDesc}", font = font12, fill = epd.GRAY4)
 
