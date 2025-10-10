@@ -78,7 +78,6 @@ def drawMetar(metarInfo):
     dewp = getFloatValue(metarInfo, "dewp")
     epochTime = getFloatValue(metarInfo, "obsTime")
 
-    # = getStringValue(metarInfo, "")
     windDesc = "Unknown" 
     visibilityDesc = "Unkown"
     currWeatherDesc = ""
@@ -115,8 +114,10 @@ def drawMetar(metarInfo):
     if altimeter != "":
         altimeterDesc = "{:.2f}".format(altimeter)
     
+    tempFormatter = "{:.2f}"
     if temp != "":
-        tempDesc = f"Tempurature: {str(int(round(temp, 0)))}°C  Dew Point: {str(int(round(dewp, 0)))}°C"
+        # tempDesc = f"Tempurature: {str(int(round(temp, 0)))}°C  Dew Point: {str(int(round(dewp, 0)))}°C"
+        tempDesc = f"Tempurature: {temp:.2f}°C  Dew Point: {dewp:.2f}°C"
 
     if epochTime > 0:
         timeDesc = epoch_to_24hr_time(epochTime)
