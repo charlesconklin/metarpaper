@@ -45,6 +45,8 @@ def getMetarInfo(code):
 def displayMetarAtIndex(indexVal):
     a_code = airports_array[paperSettings["loop_index"]]
     info = getMetarInfo(a_code)
+    if info is None or "icaoId" not in info:
+        return
     logging.info("draw airport weather: " + info["icaoId"])
     paperdraw.drawMetar(info)
 
