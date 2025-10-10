@@ -88,5 +88,7 @@ def translateWind(windString):
 def translateCloudLayer(layer):
     #sample {"cover": "BKN","base": 9000}
     cover = translateSky(layer["cover"])
-    base = layer["base"]
-    return f"{cover} at {base:,} AGL"
+    res = f"{cover} at {layer["base"]:,} AGL"
+    if "top" in  layer:
+        res += f" {layer["top"]:,} AGL"
+    return res
