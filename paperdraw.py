@@ -115,7 +115,6 @@ def drawMetar(metarInfo):
         altimeterDesc = f"{altimeter:.2f}"
         
     if temp != "":
-        # tempDesc = f"Tempurature: {str(int(round(temp, 0)))}°C  Dew Point: {str(int(round(dewp, 0)))}°C"
         tempDesc = f"Tempurature: {temp:.0f}°C  Dew Point: {dewp:.0f}°C"
 
     if epochTime > 0:
