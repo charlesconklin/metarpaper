@@ -21,9 +21,6 @@ import metartranslate
 logging.basicConfig(level=logging.INFO)
 #264 X 176
 epd = epd2in7_V2.EPD()
-imageBase = Image.new('1', (epd.height, epd.width), epd.GRAY1)  # 255: clear the frame
-canvas = ImageDraw.Draw(imageBase)
-emptyCanvas = Image.new('1', (epd.height, epd.width), epd.GRAY1)  # 255: clear the frame
 refreshInterval = 2
 refreshIndex = 4
 
@@ -125,10 +122,12 @@ def drawMetar(metarInfo):
 
     if epochTime > 0:
         timeDesc = epoch_to_24hr_time(epochTime)
-
-
+        
     logging.info(f"drawMetar > {icaoId} - {icaoName}")
-    canvas.rectangle((0, 0, epd.height, epd.width), fill = epd.GRAY1)
+    imageBase = Image.new('1', (epd.height, epd.width), epd.GRAY1)
+    canvas = ImageDraw.Draw(imageBase)
+
+    #canvas.rectangle((0, 0, epd.height, epd.width), fill = epd.GRAY1)
     # first line airport and Flt Cat
     canvas.text((10, 0), icaoId, font = font35, fill = epd.GRAY4)
     tpos = 200 if len(fltCat) > 3 else 220
@@ -188,14 +187,10 @@ def drawMetar(metarInfo):
     # draw.text((10, 110), time.strftime('%H:%M:%S'), font = font24, fill = 0)
     # newimage = Himage.crop([10, 110, 120, 150])
     # Himage.paste(newimage, (10,110)) 
-    # epd.display_Partial(epd.getbuffer(Himage),110, epd.height - 120, 150, epd.height - 10)
-      newimage = emptyCanvas.crop([1, 1, epd.width // 2, epd.height // 2])
+    # epd.display_Partial(epd.getbuffer(Himage),110, epd.height - 120, 150, epd.height - 10)      
+      newimage = imageBase.crop([1, 1, epd.height // 2, epd.width // 2])
       imageBase.paste(newimage, (1, 1))
-      epd.display_Partial(epd.getbuffer(newimage), 1, 1, epd.height // 2, epd.width // 2)
-
-    #   newimage = imageBase.crop([1, 1, epd.height // 2, epd.width // 2])
-    #   imageBase.paste(newimage, (1, 1))
-    #   epd.display_Partial(epd.getbuffer(imageBase), 1, 1, epd.height // 2, epd.width // 2)
+      epd.display_Partial(epd.getbuffer(imageBase), 1, 1, epd.height // 2, epd.width // 2)
       
     #   newimage2 = imageBase.crop([epd.getbuffer(imageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, epd.height - 2, epd.width - 2])
     #   imageBase.paste(newimage2, ((epd.width // 2) + 1, (epd.height // 2) + 1))
