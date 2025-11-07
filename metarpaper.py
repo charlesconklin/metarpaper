@@ -29,7 +29,7 @@ paperSettings["hold"] = False
 paperSettings["hold_sec"] = 0
 
 hold_amount = 20
-timeBetweenAiports = 30
+timeBetweenAiports = 5
 
 def getMetarInfo(code):
     for m in paperSettings["metar_list"]:
