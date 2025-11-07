@@ -193,10 +193,20 @@ def drawMetar(metarInfo):
       imageBase.paste(newimage, (1, 1))
       epd.display_Partial(epd.getbuffer(imageBase), 1, 1, epd.height // 2, epd.width // 2)
       
-      newimage2 = imageBase.crop([epd.getbuffer(imageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, epd.height - 2, epd.width - 2])
-      imageBase.paste(newimage2, ((epd.width // 2) + 1, (epd.height // 2) + 1))
-      epd.display_Partial(epd.getbuffer(imageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, epd.height - 2, epd.width - 2)
+    #   newimage2 = imageBase.crop([epd.getbuffer(imageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, epd.height - 2, epd.width - 2])
+    #   imageBase.paste(newimage2, ((epd.width // 2) + 1, (epd.height // 2) + 1))
+    #   epd.display_Partial(epd.getbuffer(imageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, epd.height - 2, epd.width - 2)
       refreshIndex += 1
+
+
+    #   newimage = imageBase.crop([1, 1, epd.height // 2, epd.width // 2])
+    #   imageBase.paste(newimage, (1, 1))
+    #   epd.display_Partial(epd.getbuffer(imageBase), 1, 1, epd.height // 2, epd.width // 2)
+      
+    #   newimage2 = imageBase.crop([epd.getbuffer(imageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, epd.height - 2, epd.width - 2])
+    #   imageBase.paste(newimage2, ((epd.width // 2) + 1, (epd.height // 2) + 1))
+    #   epd.display_Partial(epd.getbuffer(imageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, epd.height - 2, epd.width - 2)
+    #   refreshIndex += 1
 
 
 # try:
@@ -289,24 +299,7 @@ def drawMetar(metarInfo):
 #         epd.display_Partial(epd.getbuffer(Himage),110, epd.height - 120, 150, epd.height - 10)
 #         num = num + 1
 #         if(num == 10):
-#             break
-    
-#     # epd.init() 
-#     # epd.clear()
-#     # epd.display_Base_color(0xff)
-#     # Himage = Image.new('1', (epd.width ,epd.height), 0xff)
-#     # draw = ImageDraw.Draw(Himage)
-#     # num = 0
-#     # while (True):
-#         # draw.rectangle((10, 10, 120, 50), fill = 255)
-#         # draw.text((10, 10), time.strftime('%H:%M:%S'), font = font24, fill = 0)
-#         # newimage = Himage.crop([10, 10, 120, 50])
-#         # Himage.paste(newimage, (10,10)) 
-#         # epd.display_Partial(epd.getbuffer(Himage),10, 10, 120, 50)
-#         # num = num + 1
-#         # if(num == 10):
-#             # break
-    
+#             break    
 #     '''4Gray display'''
 #     logging.info("4Gray display--------------------------------")
 #     epd.Init_4Gray()
