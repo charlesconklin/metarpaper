@@ -24,7 +24,7 @@ epd = epd2in7_V2.EPD()
 imageBase = Image.new('1', (epd.height, epd.width), epd.GRAY1)  # 255: clear the frame
 canvas = ImageDraw.Draw(imageBase)
 emptyCanvas = Image.new('1', (epd.height, epd.width), epd.GRAY1)  # 255: clear the frame
-refreshInterval = 4
+refreshInterval = 2
 refreshIndex = 4
 
 font10 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 10)
@@ -193,9 +193,9 @@ def drawMetar(metarInfo):
       imageBase.paste(newimage, (1, 1))
       epd.display_Partial(epd.getbuffer(imageBase), 1, 1, epd.height // 2, epd.width // 2)
 
-      newimage = imageBase.crop([1, 1, epd.height // 2, epd.width // 2])
-      imageBase.paste(newimage, (1, 1))
-      epd.display_Partial(epd.getbuffer(imageBase), 1, 1, epd.height // 2, epd.width // 2)
+    #   newimage = imageBase.crop([1, 1, epd.height // 2, epd.width // 2])
+    #   imageBase.paste(newimage, (1, 1))
+    #   epd.display_Partial(epd.getbuffer(imageBase), 1, 1, epd.height // 2, epd.width // 2)
       
     #   newimage2 = imageBase.crop([epd.getbuffer(imageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, epd.height - 2, epd.width - 2])
     #   imageBase.paste(newimage2, ((epd.width // 2) + 1, (epd.height // 2) + 1))
