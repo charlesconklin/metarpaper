@@ -176,12 +176,11 @@ def drawMetar(metarInfo):
       logging.info("=> Full Draw")
       epd.display(epd.getbuffer(imageBase))
       refreshIndex = 1
-    else:
+    else:      
       logging.info("=> Partial Draw")
       epd.display_Base_color(epd.GRAY1)
-    #   epd.display_Partial(epd.getbuffer(emptyImageBase), 1, 1, epd.height // 2, epd.width // 2)
-    #   epd.display_Partial(epd.getbuffer(emptyImageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, 
-    #                       epd.height - 2, epd.width - 2)
+      emptyImageBase = Image.new('1', (epd.height, epd.width), epd.GRAY1)
+      epd.display_Partial(epd.getbuffer(emptyImageBase), 1, 1, epd.width, epd.height)     
 
     # draw.rectangle((10, 110, 120, 150), fill = 255)
     # draw.text((10, 110), time.strftime('%H:%M:%S'), font = font24, fill = 0)
