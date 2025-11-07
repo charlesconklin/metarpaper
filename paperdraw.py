@@ -23,7 +23,7 @@ logging.basicConfig(level=logging.INFO)
 epd = epd2in7_V2.EPD()
 imageBase = Image.new('1', (epd.height, epd.width), epd.GRAY1)  # 255: clear the frame
 canvas = ImageDraw.Draw(imageBase)
-emptyImageBase = Image.new('1', (epd.height, epd.width), epd.GRAY1)  # 255: clear the frame
+emptyCanvas = Image.new('1', (epd.height, epd.width), epd.GRAY1)  # 255: clear the frame
 refreshInterval = 4
 refreshIndex = 4
 
@@ -189,6 +189,10 @@ def drawMetar(metarInfo):
     # newimage = Himage.crop([10, 110, 120, 150])
     # Himage.paste(newimage, (10,110)) 
     # epd.display_Partial(epd.getbuffer(Himage),110, epd.height - 120, 150, epd.height - 10)
+      newimage = emptyCanvas.crop([1, 1, epd.height // 2, epd.width // 2])
+      imageBase.paste(newimage, (1, 1))
+      epd.display_Partial(epd.getbuffer(imageBase), 1, 1, epd.height // 2, epd.width // 2)
+
       newimage = imageBase.crop([1, 1, epd.height // 2, epd.width // 2])
       imageBase.paste(newimage, (1, 1))
       epd.display_Partial(epd.getbuffer(imageBase), 1, 1, epd.height // 2, epd.width // 2)
