@@ -171,42 +171,9 @@ def drawMetar(metarInfo):
     # time at bottome
     canvas.text((10, epd.width - 13), f"Observed at {timeDesc}", font = font12, fill = epd.GRAY4)
 
-    global refreshIndex
-    if (refreshIndex >= refreshInterval):
-      logging.info("=> Full Draw")
-      epd.display(epd.getbuffer(imageBase))
-      refreshIndex = 1
-    else:      
-      logging.info("=> Partial Draw")
-      epd.display_Base_color(epd.GRAY1)
-      emptyImageBase = Image.new('1', (epd.height, epd.width), epd.GRAY1)
-      epd.display_Partial(epd.getbuffer(emptyImageBase), 1, 1, epd.width, epd.height)     
-
-    # draw.rectangle((10, 110, 120, 150), fill = 255)
-    # draw.text((10, 110), time.strftime('%H:%M:%S'), font = font24, fill = 0)
-    # newimage = Himage.crop([10, 110, 120, 150])
-    # Himage.paste(newimage, (10,110)) 
-    # epd.display_Partial(epd.getbuffer(Himage),110, epd.height - 120, 150, epd.height - 10)      
-      newimage = imageBase.crop([1, 1, epd.width // 2, epd.height // 2])
-      imageBase.paste(newimage, (1, 1))
-      epd.display_Partial(epd.getbuffer(imageBase), 1, 1, epd.width // 2, epd.height //2)
-      
-    #   newimage2 = imageBase.crop([epd.getbuffer(imageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, epd.height - 2, epd.width - 2])
-    #   imageBase.paste(newimage2, ((epd.width // 2) + 1, (epd.height // 2) + 1))
-    #   epd.display_Partial(epd.getbuffer(imageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, epd.height - 2, epd.width - 2)
-      refreshIndex += 1
-
-
-    #   newimage = imageBase.crop([1, 1, epd.height // 2, epd.width // 2])
-    #   imageBase.paste(newimage, (1, 1))
-    #   epd.display_Partial(epd.getbuffer(imageBase), 1, 1, epd.height // 2, epd.width // 2)
-      
-    #   newimage2 = imageBase.crop([epd.getbuffer(imageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, epd.height - 2, epd.width - 2])
-    #   imageBase.paste(newimage2, ((epd.width // 2) + 1, (epd.height // 2) + 1))
-    #   epd.display_Partial(epd.getbuffer(imageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, epd.height - 2, epd.width - 2)
-    #   refreshIndex += 1
-
-
+    logging.info("=> Display")
+    epd.display(epd.getbuffer(imageBase))
+    
 # try:
 #     resp = req.get(wx_url)
 #     if resp.status_code == 200:
