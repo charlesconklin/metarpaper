@@ -23,6 +23,8 @@ logging.basicConfig(level=logging.INFO)
 epd = epd2in7_V2.EPD()
 imageBase = Image.new('1', (epd.height, epd.width), epd.GRAY1)  # 255: clear the frame
 canvas = ImageDraw.Draw(imageBase)
+refreshInterval = 4
+refreshIndex = 1
 
 font10 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 10)
 font12 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 12)
@@ -61,7 +63,7 @@ def shutdownPaperDraw():
     epd.Clear()
     epd2in7_V2.epdconfig.module_exit(cleanup=True)
 
-def drawMetar(metarInfo):
+def drawMetar(metarInfo, fullRefresh):
     logging.info(f"METAR: {getStringValue(metarInfo, "rawOb")}")
     fltCat = getStringValue(metarInfo, "fltCat")
     icaoId = getStringValue(metarInfo, "icaoId")
@@ -169,8 +171,14 @@ def drawMetar(metarInfo):
     # time at bottome
     canvas.text((10, epd.width - 13), f"Observed at {timeDesc}", font = font12, fill = epd.GRAY4)
 
-    epd.display_Fast(epd.getbuffer(imageBase))
-    
+    if (fullRefresh == True or refreshIndex > refreshInterval):
+      epd.display_Fast(epd.getbuffer(imageBase))
+      refreshIndex = 1
+    else:
+        epd.display_Partial(epd.getbuffer(imageBase), 0, 0, epd.height / 2, epd.width / 2)
+        epd.display_Partial(epd.getbuffer(imageBase), (epd.height / 2) + 1, (epd.width / 2) + 1, 
+                            epd.height / 2, epd.width / 2)
+        refreshIndex += 1
 
 
 # try:
