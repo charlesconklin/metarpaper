@@ -24,7 +24,7 @@ epd = epd2in7_V2.EPD()
 imageBase = Image.new('1', (epd.height, epd.width), epd.GRAY1)  # 255: clear the frame
 canvas = ImageDraw.Draw(imageBase)
 refreshInterval = 4
-refreshIndex = 1
+refreshIndex = 4
 
 font10 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 10)
 font12 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 12)
