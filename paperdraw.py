@@ -23,6 +23,7 @@ logging.basicConfig(level=logging.INFO)
 epd = epd2in7_V2.EPD()
 imageBase = Image.new('1', (epd.height, epd.width), epd.GRAY1)  # 255: clear the frame
 canvas = ImageDraw.Draw(imageBase)
+emptyImageBase = Image.new('1', (epd.height, epd.width), epd.GRAY1)  # 255: clear the frame
 refreshInterval = 4
 refreshIndex = 4
 
@@ -180,6 +181,9 @@ def drawMetar(metarInfo):
     else:
       logging.info("=> Partial Draw")
       epd.TurnOnDisplay_Partial()
+      epd.display_Partial(epd.getbuffer(emptyImageBase), 0, 0, epd.height // 2, epd.width // 2)
+      epd.display_Partial(epd.getbuffer(emptyImageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, 
+                          epd.height, epd.width)
       epd.display_Partial(epd.getbuffer(imageBase), 0, 0, epd.height // 2, epd.width // 2)
       epd.display_Partial(epd.getbuffer(imageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, 
                           epd.height, epd.width)
