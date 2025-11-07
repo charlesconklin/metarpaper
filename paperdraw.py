@@ -189,7 +189,7 @@ def drawMetar(metarInfo):
     # newimage = Himage.crop([10, 110, 120, 150])
     # Himage.paste(newimage, (10,110)) 
     # epd.display_Partial(epd.getbuffer(Himage),110, epd.height - 120, 150, epd.height - 10)
-      newimage = emptyCanvas.crop([1, 1, epd.height // 2, epd.width // 2])
+      newimage = emptyCanvas.crop([1, 1, epd.width // 2, epd.height // 2])
       imageBase.paste(newimage, (1, 1))
       epd.display_Partial(epd.getbuffer(imageBase), 1, 1, epd.height // 2, epd.width // 2)
 
