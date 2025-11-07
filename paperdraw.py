@@ -173,13 +173,15 @@ def drawMetar(metarInfo):
 
     global refreshIndex
     if (refreshIndex >= refreshInterval):
+      logging.info("=> Full Draw")
       epd.display_Fast(epd.getbuffer(imageBase))
       refreshIndex = 1
     else:
-        epd.display_Partial(epd.getbuffer(imageBase), 0, 0, epd.height // 2, epd.width // 2)
-        epd.display_Partial(epd.getbuffer(imageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, 
-                            epd.height, epd.width)
-        refreshIndex += 1
+      logging.info("=> Partial Draw")
+      epd.display_Partial(epd.getbuffer(imageBase), 0, 0, epd.height // 2, epd.width // 2)
+      epd.display_Partial(epd.getbuffer(imageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, 
+                          epd.height, epd.width)
+      refreshIndex += 1
 
 
 # try:
