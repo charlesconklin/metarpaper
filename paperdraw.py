@@ -194,7 +194,7 @@ def drawMetar(metarInfo):
       epd.display_Partial(epd.getbuffer(imageBase), 1, 1, epd.width // 2, epd.height // 2)
       
       newimage2 = imageBase.crop([epd.getbuffer(imageBase), (epd.width // 2) + 1, (epd.height // 2) + 1, epd.width - 2, epd.height - 2])
-      imageBase.paste(newimage2, ((epd.height // 2) + 1, (epd.width // 2) + 1))
+      imageBase.paste(newimage2, ((epd.width // 2) + 1, (epd.height // 2) + 1))
       epd.display_Partial(epd.getbuffer(imageBase), (epd.width // 2) + 1, (epd.height // 2) + 1, epd.width - 2, epd.height - 2)
       refreshIndex += 1
 
