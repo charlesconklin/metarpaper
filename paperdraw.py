@@ -180,13 +180,10 @@ def drawMetar(metarInfo):
     else:
       logging.info("=> Partial Draw")
       epd.display_Base_color(epd.GRAY1)
-      epd.display_Partial(epd.getbuffer(emptyImageBase), 1, 1, epd.height // 2, epd.width // 2)
-      time.sleep(0.1)
-      epd.display_Partial(epd.getbuffer(emptyImageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, 
-                          epd.height - 2, epd.width - 2)
-      time.sleep(0.1)
+    #   epd.display_Partial(epd.getbuffer(emptyImageBase), 1, 1, epd.height // 2, epd.width // 2)
+    #   epd.display_Partial(epd.getbuffer(emptyImageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, 
+    #                       epd.height - 2, epd.width - 2)
       epd.display_Partial(epd.getbuffer(imageBase), 1, 1, epd.height // 2, epd.width // 2)
-      time.sleep(0.1)
       epd.display_Partial(epd.getbuffer(imageBase), (epd.height // 2) + 1, (epd.width // 2) + 1, 
                           epd.height - 2, epd.width - 2)
       refreshIndex += 1
