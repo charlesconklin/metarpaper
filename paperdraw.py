@@ -63,7 +63,7 @@ def shutdownPaperDraw():
     epd.Clear()
     epd2in7_V2.epdconfig.module_exit(cleanup=True)
 
-def drawMetar(metarInfo, fullRefresh):
+def drawMetar(metarInfo):
     logging.info(f"METAR: {getStringValue(metarInfo, "rawOb")}")
     fltCat = getStringValue(metarInfo, "fltCat")
     icaoId = getStringValue(metarInfo, "icaoId")
@@ -171,7 +171,7 @@ def drawMetar(metarInfo, fullRefresh):
     # time at bottome
     canvas.text((10, epd.width - 13), f"Observed at {timeDesc}", font = font12, fill = epd.GRAY4)
 
-    if (fullRefresh == True or refreshIndex > refreshInterval):
+    if (refreshIndex >= refreshInterval):
       epd.display_Fast(epd.getbuffer(imageBase))
       refreshIndex = 1
     else:
