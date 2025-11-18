@@ -120,7 +120,7 @@ print("Daytime Dimming:" + str(ACTIVATE_DAYTIME_DIMMING) + (" using Sunrise/Suns
 pixels = neopixel.NeoPixel(LED_PIN, LED_COUNT, brightness = LED_BRIGHTNESS_DIM if (ACTIVATE_DAYTIME_DIMMING and bright == False) else LED_BRIGHTNESS, pixel_order = LED_ORDER, auto_write = False)
 
 # Read the airports file to retrieve list of airports and use as order for LEDs
-with open("/home/pi/airports") as f:
+with open("/home/pi/metarmap/airports.txt") as f:
 	airports = f.readlines()
 airports = [x.strip() for x in airports]
 
