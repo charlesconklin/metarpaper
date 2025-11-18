@@ -9,7 +9,7 @@ import requests as req # type: ignore
 
 
 base_path = os.getcwd()
-airport_file_path = os.path.join(base_path, 'paperairports')
+airport_file_path = os.path.join(base_path, 'paperairports.txt')
 
 logging.basicConfig(level=logging.INFO)
 
