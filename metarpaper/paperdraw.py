@@ -5,7 +5,7 @@ import os
 import datetime
 
 base_path = os.getcwd()
-picdir = os.path.join(base_path, 'metarpaper/pic')
+fontsdir = os.path.join(base_path, 'metarpaper/fonts')
 libdir = os.path.join(base_path, 'metarpaper/wavesharelib')
 
 if os.path.exists(libdir):
@@ -22,11 +22,11 @@ logging.basicConfig(level=logging.INFO)
 #264 X 176
 epd = epd2in7_V2.EPD()
 
-font10 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 10)
-font12 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 12)
-font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
-font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
-font35 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 35)
+font10 = ImageFont.truetype(os.path.join(fontsdir, 'Font.ttc'), 10)
+font12 = ImageFont.truetype(os.path.join(fontsdir, 'Font.ttc'), 12)
+font18 = ImageFont.truetype(os.path.join(fontsdir, 'Font.ttc'), 18)
+font24 = ImageFont.truetype(os.path.join(fontsdir, 'Font.ttc'), 24)
+font35 = ImageFont.truetype(os.path.join(fontsdir, 'Font.ttc'), 35)
 
 def getStringValue(metarObj, fieldName):
     return "" if fieldName not in metarObj else str(metarObj[fieldName])
