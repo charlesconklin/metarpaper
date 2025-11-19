@@ -7,11 +7,13 @@ import navbuttons
 import paperdraw
 import requests as req # type: ignore
 
+logging.basicConfig(level=logging.INFO)
 
 base_path = os.getcwd()
 airport_file_path = os.path.join(base_path, 'metarpaper/paperairports.txt')
 
-logging.basicConfig(level=logging.INFO)
+
+logging.info(f" Airport File Name: {airport_file_path}")
 
 wx_url = "https://aviationweather.gov/api/data/metar?hours=0&format=json&ids="
 
