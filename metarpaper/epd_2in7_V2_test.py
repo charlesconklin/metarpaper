@@ -2,7 +2,8 @@
 # -*- coding:utf-8 -*-
 import sys
 import os
-picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'epaper/pic')
+imgdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'img')
+fontsdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'fonts')
 
 import logging
 from wavesharelib import epd2in7_V2
@@ -14,7 +15,8 @@ logging.basicConfig(level=logging.DEBUG)
 
 try:
 
-    logging.info(picdir)   
+    logging.info(imgdir)   
+    logging.info(fontsdir)   
     logging.info("epd2in7 Demo")   
     epd = epd2in7_V2.EPD()
     
@@ -22,9 +24,9 @@ try:
     logging.info("init and Clear")
     epd.init()
     epd.Clear()
-    font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
-    font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
-    font35 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 35)
+    font24 = ImageFont.truetype(os.path.join(fontsdir, 'Font.ttc'), 24)
+    font18 = ImageFont.truetype(os.path.join(fontsdir, 'Font.ttc'), 18)
+    font35 = ImageFont.truetype(os.path.join(fontsdir, 'Font.ttc'), 35)
     
     # Quick refresh
     logging.info("Quick refresh demo")
@@ -47,7 +49,7 @@ try:
     time.sleep(2)
     
     logging.info("2.read bmp file")
-    Himage = Image.open(os.path.join(picdir, '2in7.bmp'))
+    Himage = Image.open(os.path.join(imgdir, '2in7.bmp'))
     epd.display_Fast(epd.getbuffer(Himage))
     time.sleep(2)
     
@@ -56,7 +58,7 @@ try:
     epd.init()
     logging.info("3.read bmp file on window")
     Himage2 = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame
-    bmp = Image.open(os.path.join(picdir, '100x100.bmp'))
+    bmp = Image.open(os.path.join(imgdir, '100x100.bmp'))
     Himage2.paste(bmp, (50,10))
     epd.display(epd.getbuffer(Himage2))
     time.sleep(2)
@@ -138,7 +140,7 @@ try:
     time.sleep(2)
     
     #display 4Gra bmp
-    Himage = Image.open(os.path.join(picdir, '2in7_Scale.bmp'))
+    Himage = Image.open(os.path.join(imgdir, '2in7_Scale.bmp'))
     epd.display_4Gray(epd.getbuffer_4Gray(Himage))
     time.sleep(2)
 
