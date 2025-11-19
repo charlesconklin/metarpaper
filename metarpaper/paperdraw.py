@@ -9,13 +9,12 @@ logging.basicConfig(level=logging.INFO)
 
 base_path = os.getcwd()
 fontsdir = os.path.join(base_path, 'metarpaper/fonts')
+logging.info(f"Font Dir: {fontsdir}")
 libdir = os.path.join(base_path, 'metarpaper/wavesharelib')
-
+logging.info(f"Lib Dir: {libdir}")
 if os.path.exists(libdir):
     sys.path.append(libdir)
 
-
-    logging.info(f"Font Dir: {fontsdir}")
 
 from wavesharelib import epd2in7_V2
 import time
