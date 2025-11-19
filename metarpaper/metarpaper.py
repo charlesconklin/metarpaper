@@ -10,7 +10,7 @@ import requests as req # type: ignore
 logging.basicConfig(level=logging.INFO)
 
 base_path = os.getcwd()
-airport_file_path = os.path.join(base_path, 'metarpaper/paperairports.txt')
+airport_file_path = os.path.join(base_path, 'paperairports.txt')
 
 
 logging.info(f" Airport File Name: {airport_file_path}")
