@@ -5,8 +5,8 @@ import os
 import datetime
 
 base_path = os.getcwd()
-picdir = os.path.join(base_path, 'pic')
-libdir = os.path.join(base_path, 'wavesharelib')
+picdir = os.path.join(base_path, 'metarpaper/pic')
+libdir = os.path.join(base_path, 'metarpaper/wavesharelib')
 
 if os.path.exists(libdir):
     sys.path.append(libdir)
