@@ -128,7 +128,7 @@ pixels = neopixel.NeoPixel(LED_PIN, LED_COUNT, brightness = LED_BRIGHTNESS_DIM i
 
 # Read the airports file to retrieve list of airports and use as order for LEDs
 base_path = os.getcwd()
-airport_file_path = os.path.join(base_path, 'metarmap/airports.txt')
+airport_file_path = os.path.join(base_path, 'airports.txt')
 with open(airport_file_path) as a_file:
 	airports_array = a_file.readlines()
 airports_array = [x.strip() for x in airports_array]
