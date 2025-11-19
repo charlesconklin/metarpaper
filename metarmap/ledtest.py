@@ -2,12 +2,12 @@
 
 import urllib.request
 import xml.etree.ElementTree as ET
-import board
-import neopixel
+import board # type: ignore
+import neopixel # type: ignore
 import time
 import datetime
 try:
-	import astral
+	import astral # type: ignore
 except ImportError:
 	astral = None
 

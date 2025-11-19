@@ -1,5 +1,5 @@
-import board
-import neopixel
+import board # type: ignore
+import neopixel # type: ignore
 
 pixels = neopixel.NeoPixel(board.D18, 50)
 pixels.deinit()
