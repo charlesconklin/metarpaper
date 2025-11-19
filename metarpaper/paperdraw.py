@@ -14,6 +14,9 @@ libdir = os.path.join(base_path, 'metarpaper/wavesharelib')
 if os.path.exists(libdir):
     sys.path.append(libdir)
 
+
+    logging.info(f"Font Dir: {fontsdir}")
+
 from wavesharelib import epd2in7_V2
 import time
 from PIL import Image,ImageDraw,ImageFont # type: ignore
