@@ -8,9 +8,9 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 base_path = os.getcwd()
-fontsdir = os.path.join(base_path, 'metarpaper/fonts')
+fontsdir = os.path.join(base_path, 'fonts')
 logging.info(f"Font Dir: {fontsdir}")
-libdir = os.path.join(base_path, 'metarpaper/wavesharelib')
+libdir = os.path.join(base_path, 'wavesharelib')
 logging.info(f"Lib Dir: {libdir}")
 if os.path.exists(libdir):
     sys.path.append(libdir)
