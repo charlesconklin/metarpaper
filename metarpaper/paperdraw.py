@@ -4,6 +4,9 @@ import sys
 import os
 import datetime
 
+import logging
+logging.basicConfig(level=logging.INFO)
+
 base_path = os.getcwd()
 fontsdir = os.path.join(base_path, 'metarpaper/fonts')
 libdir = os.path.join(base_path, 'metarpaper/wavesharelib')
@@ -11,14 +14,11 @@ libdir = os.path.join(base_path, 'metarpaper/wavesharelib')
 if os.path.exists(libdir):
     sys.path.append(libdir)
 
-import logging
 from wavesharelib import epd2in7_V2
 import time
 from PIL import Image,ImageDraw,ImageFont # type: ignore
 import traceback
 import metartranslate
-
-logging.basicConfig(level=logging.INFO)
 #264 X 176
 epd = epd2in7_V2.EPD()
 
